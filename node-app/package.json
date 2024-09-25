@@ -1,0 +1,13 @@
+{
+  "name": "fullcycle-node-app",
+  "version": "1.0.0",
+  "main": "index.js",
+  "license": "MIT",
+  "scripts": {
+    "start": "node app.js"
+  },
+  "dependencies": {
+    "express": "^4.21.0",
+    "mysql": "^2.18.1"
+  }
+}
