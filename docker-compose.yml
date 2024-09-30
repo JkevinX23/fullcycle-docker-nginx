@@ -27,7 +27,8 @@ services:
       - MYSQL_PASSWORD=root
       - MYSQL_DB=fullcycle
     depends_on:
-      - mysql
+      mysql:
+        condition: service_healthy
 
   mysql:
     image: mysql:5.7
@@ -39,6 +40,11 @@ services:
       - mysql-data:/var/lib/mysql
     networks:
       - app-network
+    healthcheck:
+      test: ["CMD", "mysqladmin", "ping", "-h", "localhost"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
 
 networks:
   app-network:
